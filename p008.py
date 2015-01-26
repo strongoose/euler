@@ -64,24 +64,23 @@ def list_product(nums):
         ans = ans * int(i)
     return ans
 
-def list_of_fives(nums):
+def substrings_length_n(string, substring_length):
     '''
-    I think this is supposed to return all the 5-sublists in a list, but
-    it's not doing a very good job of it.
+    Return all n length substrings in a string
     '''
-    the_fives = []
+    substrings = []
     i = 0
-    while i <= 995:
-        the_fives.append(nums[i:i+5])
+    while i + substring_length < len(string):
+        substrings.append(string[i:i+substring_length])
         i += 1
-    return the_fives
+    return substrings
 
 def solve():
     '''
     Solve the problem.
     '''
     solution = 0
-    for i in list_of_fives(BIG_N):
+    for i in substrings_length_n(BIG_N, 13):
         product = list_product(i)
         if product > solution:
             solution = product
