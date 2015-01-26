@@ -1,56 +1,71 @@
-# Problem:
-#
-#     2520 is the smallest number that can be divided by each of the
-#     numbers from 1 to 10 without any remainder.
-#
-#     What is the smallest positive number that is evenly divisible by
-#     all of the numbers from 1 to 20?
-#
+'''
+Problem 005:
+
+    2520 is the smallest number that can be divided by each of the
+    numbers from 1 to 10 without any remainder.
+
+    What is the smallest positive number that is evenly divisible by
+    all of the numbers from 1 to 20?
+'''
 
 import math
 import collections
 
-def factorise(n): # return primes up to n
-    N = n
-    L = range(2, math.ceil(n**0.5)+1)
-    P = []
+def primes_below(num): # return primes up to n
+    '''
+    Return primes lower than a number
+    '''
+    factors = range(2, math.ceil(num**0.5)+1)
+    primes = []
     while True:
-        for i in L:
-            N = n
-            if n % i == 0:
-                n = n/i
-                P.append(int(i))
+        for i in factors:
+            big_n = num
+            if num % i == 0:
+                num = num/i
+                primes.append(int(i))
                 break
-        if n == 1:
+        if num == 1:
             break
-        if n == N:
-           P.append(int(N))
-           break
-    return P
+        if num == big_n:
+            primes.append(int(big_n))
+            break
+    return primes
 
-def multiCUnion(Cs): # takes list of counters and
-                     # produces a union of the lot
-    if Cs == []:
+def multi_counter_union(counters):
+    '''
+    Takes list of counters and produces a union of the lot.
+    '''
+    if counters == []:
         return collections.Counter()
     else:
-        return multiCUnion(Cs[:-1]) | Cs[-1]
+        return multi_counter_union(counters[:-1]) | counters[-1]
 
-def counterProduct(C):
-    P=1
-    for i in C:
-        P = P * i**C[i]
-    return P
+def counter_product(counter):
+    '''
+    Works out the product of all the numbers in a counter
+    e.g. counter_product([(2, 2), (3, 1), (5, 3)]) = 2*2*3*5*5*5
+    '''
+    product = 1
+    for i in counter:
+        product = product * i**counter[i]
+    return product
 
-def LCM(ns):
-    Cs = []
-    for i in ns:
-        Cs.append(collections.Counter(factorise(i)))
-    P = multiCUnion(Cs)
-    lcm = counterProduct(P)
-    return lcm
+def lcm(nums):
+    '''
+    Find the lowest common multiple of the numbers in an iterable.
+    '''
+    counters = []
+    for i in nums:
+        counters.append(collections.Counter(primes_below(i)))
+    counter = multi_counter_union(counters)
+    result = counter_product(counter)
+    return result
 
 def solve():
-    return LCM(list(range(1,21)))
+    '''
+    Solve the problem.
+    '''
+    return lcm(list(range(1, 21)))
 
 if __name__ == '__main__':
     print(solve())
