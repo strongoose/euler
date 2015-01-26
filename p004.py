@@ -14,7 +14,9 @@ def is_palindrome(word):
     Check whether a string is a palindrome
     '''
     word = str(word)
-    if word == word[::-1]: # Dear future self: 
+    # Dear future self: the last number in slice notation denotes step,
+    # so [::-1] takes the entire string as a slice and reverses it.
+    if word == word[::-1]:
         return True
     else:
         return False
@@ -23,16 +25,8 @@ def solve():
     '''
     Solve the problem.
     '''
-    three_digits = range(100, 1000)
-    palindromes = []
-
-    for i in three_digits:
-        for j in three_digits:
-            candidate = i*j
-            if is_palindrome(candidate):
-                palindromes.append(candidate)
-
-    return max(palindromes)
+    return [i*j for i in range(100, 1000) for j in range(100, 1000) if
+            is_palindrome(i*j)]
 
 if __name__ == '__main__':
     print(solve())
