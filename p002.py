@@ -9,9 +9,6 @@
 #     By considering the terms in the Fibonacci sequence whose values do
 #     not exceed four million, find the sum of the even-valued terms.
 #
-
-T=0
-
 def fibTo1M():
     L = [1,2]
     while L[-1] < 4*10**6:
@@ -19,10 +16,14 @@ def fibTo1M():
         L.append(L[l-2] + L[l-1])
     return(L[0:-1])
 
-fs = fibTo1M()
+def solve():
+    T=0
+    fs = fibTo1M()
 
-for i in fs:
-    if i % 2 == 0:
-        T = T + i
+    for i in fs:
+        if i % 2 == 0:
+            T = T + i
+    return T
 
-print(T)
+if __name__ == '__main__':
+    print(solve())

@@ -24,4 +24,8 @@ def prime_factorise(originalNumber):
             break
     return primeFactors
 
-print(max(prime_factorise(600851475143)))
+def solve():
+    return max(prime_factorise(600851475143))
+
+if __name__ == '__main__':
+    print(solve())

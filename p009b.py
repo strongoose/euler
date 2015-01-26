@@ -9,13 +9,13 @@
 #     Find the product abc.
 #
 
-for a in range(1,1001):
-    done = False
-    for b in range(1,1001):
-        c = 1000 - ( a + b )
-        if a**2 + b**2 == c ** 2:
-            print(a*b*c)
-            done = True
-            break
-    if done:
-        break
+def solve():
+    for a in range(1,1001):
+        done = False
+        for b in range(1,1001):
+            c = 1000 - ( a + b )
+            if a**2 + b**2 == c ** 2:
+                return (a*b*c)
+
+if __name__ == '__main__':
+    print(solve())

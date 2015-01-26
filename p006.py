@@ -29,4 +29,8 @@ def squareSum(ns):
 def sqsDiff(ns):
     return squareSum(ns) - sumOfSquares(ns)
 
-print(sqsDiff(list(range(1,101))))
+def solve()
+    return sqsDiff(list(range(1,101)))
+
+if __name__ == '__main__':
+    print(solve())

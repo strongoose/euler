@@ -66,8 +66,12 @@ def listOf5s(Ns):
         i += 1
     return L
 
-Ps = []
-for i in listOf5s(bigN):
-    Ps.append(listProduct(i))
+def solve():
+    Ps = []
+    for i in listOf5s(bigN):
+        Ps.append(listProduct(i))
+    
+    return max(Ps)
 
-print(max(Ps))
+if __name__ == '__main__':
+    print(solve())

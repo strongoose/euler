@@ -42,4 +42,8 @@ def factorise(originalNumber):
     return primeFactors
 
 
-print(factorise(5*10**12+123))
+def solve():
+    return factorise(5*10**12+123)
+
+if __name__ == '__main__':
+    print(solve())

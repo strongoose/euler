@@ -49,4 +49,8 @@ def LCM(ns):
     lcm = counterProduct(P)
     return lcm
 
-print(LCM(list(range(1,21))))
+def solve():
+    return LCM(list(range(1,21)))
+
+if __name__ == '__main__':
+    print(solve())

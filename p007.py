@@ -25,4 +25,8 @@ def primeScan(N): # scan numbers indefinitely until we've found the nth prime
             break
     return(P)
 
-print(primeScan(10001)[-1])
+def solve():
+    return primeScan(10001)[-1]
+
+if __name__ == '__main__':
+    print(solve())

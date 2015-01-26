@@ -18,10 +18,14 @@ def sieve(N): # use the Sieve to find all primes up to N
                 Ns[p*j-2] = 0
     return [ x for x in Ns if x != 0 ] # Suddenly this line is making me think this could be nicely implemented with recursion.
 
-N = 2*(10**6)
+def solve(
+    N = 2*(10**6)
 
-S = 0
-for p in sieve(N):
-    S = S + p
+    S = 0
+    for p in sieve(N):
+        S = S + p
 
-print(S)
+    return S
+
+if __name__ == '__main__':
+    print(solve())
