@@ -17,40 +17,36 @@ Problem:
        21: 1,3,7,21
        28: 1,2,4,7,14,28
 
-    We can see that 28 is the first triangle number to have over five divisors.
+    We can see that 28 is the first triangle number to have over five
+    divisors.
 
-    What is the value of the first triangle number to have over five hundred divisors?
+    What is the value of the first triangle number to have over five
+    hundred divisors?
 '''
 
-from math import floor
-
-def factorise(original_number):
+def number_of_divisors(number):
     '''
-    Return prime factors of a number
+    Return the number of divisors of a number
     '''
-    current_factor = original_number
-    possible_factors = range(2, floor(original_number**0.5)+1)
-    prime_factors = []
-    while True:
-        top_of_loop_factor = current_factor
-        for num in possible_factors:
-            if current_factor % num == 0:
-                current_factor = int(current_factor/num)
-                prime_factors.append(int(num))
-                break
-        if current_factor == 1 or current_factor == original_number:
-            break
-        if current_factor == top_of_loop_factor:
-            prime_factors.append(current_factor)
-            break
-    return prime_factors
-
+    ans = 0
+    square_root = int(number**0.5)
+    for divisor in range(1, square_root + 1):
+        if number % divisor == 0:
+            ans = ans + 2
+    if number == square_root**2:
+        ans = ans - 1
+    return ans
 
 def solve():
     '''
     Solve the problem.
     '''
-    return factorise(5*10**12+123)
+    number = 0
+    index = 1
+    while number_of_divisors(number) < 500:
+        number = number + index
+        index = index + 1
+    return number
 
 if __name__ == '__main__':
     print(solve())

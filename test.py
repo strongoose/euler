@@ -16,6 +16,7 @@ ANSWERS = {'001': 233168,
            '009': 31875000,
            '010': 142913828922,
            '011': 70600674,
+           '012': 76576500,
           }
 
 class AnswerTests(unittest.TestCase):
@@ -52,3 +53,6 @@ class AnswerTests(unittest.TestCase):
 
     def test_011(self):
         self.assertEqual(p011.solve(), ANSWERS['011'])
+
+    def test_012(self):
+        self.assertEqual(p012.solve(), ANSWERS['012'])
