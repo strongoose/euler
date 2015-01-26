@@ -1,18 +1,14 @@
-#!/usr/bin/env python
+# Problem:
+#
+#     The prime factors of 13195 are 5, 7, 13 and 29.
+#
+#     What is the largest prime factor of the number 600851475143 ?
 
 from math import *
 
-def sieve(N):
-    Ns = [x for x in range(2,N+1)]
-    for p in Ns:
-        if p != 0:
-            for j in range(2,floor(N/p)+1):
-                Ns[p*j-2] = 0
-    return [ x for x in Ns if x != 0 ]
-
-def factorise(originalNumber):
+def prime_factorise(originalNumber):
     currentFactor = originalNumber
-    possibleFactors = sieve(floor(originalNumber**0.5)+1)
+    possibleFactors = range(2, floor(originalNumber**0.5)+1)
     primeFactors = []
     while True:
         topOfLoopFactor = currentFactor
@@ -28,4 +24,4 @@ def factorise(originalNumber):
             break
     return primeFactors
 
-print(factorise(5*10**12+123))
+print(max(prime_factorise(600851475143)))

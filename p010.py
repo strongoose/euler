@@ -1,12 +1,14 @@
 # Problem:
 #
-# The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+#     The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 #
-# Find the sum of all the primes below two million.
+#     Find the sum of all the primes below two million.
 #
-# This one uses the Sieve of Eratosthenes for finding primes efficiently.
 
 from math import *
+
+# This one uses the Sieve of Eratosthenes for finding primes
+# efficiently.
 
 def sieve(N): # use the Sieve to find all primes up to N
     Ns = [x for x in range(2,N+1)]
