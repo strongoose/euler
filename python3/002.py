@@ -11,28 +11,25 @@ Problem 002:
     not exceed four million, find the sum of the even-valued terms.
 '''
 
-def fibonaccis_below(num):
-    '''
-    Return a list of the first N Fibonacci numbers
-    '''
-    # NOTE: this can probably be made more efficient as a generator
-    fibs = [1, 2]
-    while fibs[-1] < num:
-        length = len(fibs)
-        # lots of append calls here!
-        fibs.append(fibs[length-2] + fibs[length-1])
-    return fibs[0:-1]
+from timeit import timeit
+from itertools import takewhile
+
+def fibonacci():
+    current_fib = 1
+    next_fib = 1
+    while True:
+        yield current_fib
+        (current_fib, next_fib) = (next_fib, next_fib + current_fib)
 
 def solve():
-    '''
-    Solve the problem.
-    '''
     ans = 0
-    fibs = fibonaccis_below(4*10**6)
 
-    for i in fibs:
-        if i % 2 == 0:
-            ans = ans + i
+    fibs = fibonacci()
+    fib = next(fibs)
+    while fib <= 4*10**6:
+        if fib % 2 == 0:
+            ans += fib
+        fib = next(fibs)
     return ans
 
 if __name__ == '__main__':
